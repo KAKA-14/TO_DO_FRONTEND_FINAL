@@ -24,10 +24,7 @@ const Note = ({ note }) => {
 
   const archieveNote = async(note) => {
     const result=await gettodoarc(note);
-    console.log("arc",result);
     setNotes(result.data.data);
-    console.log("notes",notes);
-
     setArchiveNotes((prevArr) => [note, ...prevArr]);
   };
 
@@ -62,7 +59,6 @@ const Note = ({ note }) => {
               key={index}
               id={index}
               onCheckNoteContent={checkNoteContent}
-              // onDeleteNoteContent={deleteNoteContent}
             />
           );
         })}
@@ -74,7 +70,6 @@ const Note = ({ note }) => {
           onClick={() => archieveNote(note)}
         />
 
-        {/* <Delete fontSize="small" onClick={() => deleteNote(note)} /> */}
       </CardActions>
     </StyledCard>
   );

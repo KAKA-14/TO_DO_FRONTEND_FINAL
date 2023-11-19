@@ -25,19 +25,19 @@ const Notes = () => {
     if (result.status===200&&result.data.status===200){
        setNotes(reversedContentArray);
     }
-    console.log(notes);
+    console.log(contentArray);
 
   }
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
-      <SwiperDrawer/>
+      <SwiperDrawer />
       <Box sx={{ p: 3, width: "100%" }}>
         <DrawerHeader />
         <Form />
-        {notes.length > 0 ? (
+        {notes && notes.length > 0 ? (
           <Grid container style={{ marginTop: "18px" }}>
             {notes.map((note) => (
-              <Grid item>
+              <Grid item key={note._id}>
                 <Note note={note} />
               </Grid>
             ))}
@@ -47,7 +47,7 @@ const Notes = () => {
         )}
       </Box>
     </Box>
-  );
+  );  
 };
 
 export default Notes;

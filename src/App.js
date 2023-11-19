@@ -9,7 +9,6 @@ import React from "react";
 import SwiperDrawer from "./components/SwiperDrawer.js";
 import Notes from "./components/notes/Notes";
 import { Box } from "@mui/material";
-import DeleteNotes from "./components/delete/DeleteNotes";
 import Archives from "./components/archives/Archives";
 import Error from './components/Error.js';
 
@@ -32,7 +31,6 @@ function App() {
                 <Routes>
                   <Route path="/createtodo/notes" element={<Notes />} />
                   <Route path="/createtodo/archive" element={<Archives />} />
-                  <Route path="/createtodo/delete" element={<DeleteNotes />} />
                 </Routes>
               </Box>
             </DataProvider>

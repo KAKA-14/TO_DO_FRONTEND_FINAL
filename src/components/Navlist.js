@@ -6,7 +6,6 @@ import ListItemText from "@mui/material/ListItemText";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import DeleteOutlineSharpIcon from "@mui/icons-material/DeleteOutlineSharp";
 import { Link } from "react-router-dom";
 
 const Navlist = () => {
@@ -14,12 +13,7 @@ const Navlist = () => {
     { id: 1, name: "Notes", icon: <EditNoteIcon />, route: "/createtodo/notes" },
     { id: 2, name: "Archive", icon: <ArchiveIcon />, route: "/createtodo/archive" },
     { id: 3, name: "Reminder", icon: <NotificationsActiveIcon />, route: "/createtodo/notes" },
-    {
-      id: 4,
-      name: "Trash",
-      icon: <DeleteOutlineSharpIcon />,
-      route: "/createtodo/delete",
-    },
+    
   ];
 
   return (

@@ -17,21 +17,19 @@ border-radius:3px;
 
 const Archive = ({ note }) => {
 
-    const {notes , setNotes , archiveNotes, setArchiveNotes , setDeletedNotes} = useContext(DataContext);
+    const {notes , setNotes , archiveNotes, setArchiveNotes } = useContext(DataContext);
 
     const UnarchieveNote = async(note) =>{
 
       const result=await archiveUnarc(note);
-      setNotes(result);
+      setNotes(result.data.data);
       setArchiveNotes((prevArr) => [note, ...prevArr]);
     }
 
     const deleteNote = (note) =>{
         const updatedNotes = archiveNotes.filter(data => data.id !== note.id);
         setArchiveNotes(updatedNotes);
-        setDeletedNotes(prevArr => [note,...prevArr]);
 
-        
     }
 
 
