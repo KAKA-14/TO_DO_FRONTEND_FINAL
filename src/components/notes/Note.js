@@ -24,8 +24,9 @@ const Note = ({ note }) => {
 
   const archieveNote = async(note) => {
     const result=await gettodoarc(note);
-    setNotes(result.data.data);
-    setArchiveNotes((prevArr) => [note, ...prevArr]);
+    const updatedNotes = notes.filter((data) => data.id !== result.id);
+    setNotes(updatedNotes);
+    setArchiveNotes((prevArr) => [result, ...prevArr]);
   };
 
 

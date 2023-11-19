@@ -22,8 +22,11 @@ const Archive = ({ note }) => {
     const UnarchieveNote = async(note) =>{
 
       const result=await archiveUnarc(note);
-      setNotes(result.data.data);
-      setArchiveNotes((prevArr) => [note, ...prevArr]);
+      const updatedNotes = archiveNotes.filter(data => data.id !==result.id);
+      setArchiveNotes(updatedNotes);
+      setNotes(prevArr => [result,...prevArr]);
+
+     
     }
 
     const deleteNote = (note) =>{

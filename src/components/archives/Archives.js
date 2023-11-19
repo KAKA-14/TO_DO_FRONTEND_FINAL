@@ -27,7 +27,7 @@ const Archives = () => {
     },[])
     async function fetchtodo(){
       const result =await archive();
-      const contentArray = result.data.data.todos.map(({ heading, todositem }) => ({ heading, todositem }));
+      const contentArray = result.data.data.todos.map(({ _id, heading, todositem,isArchive }) => ({ _id, heading, todositem,isArchive }));
       const reversedContentArray = contentArray.reverse();
       if (result.status===200&&result.data.status===200){
          setArchiveNotes(reversedContentArray);
