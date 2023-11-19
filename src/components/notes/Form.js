@@ -25,10 +25,9 @@ const Container = styled(Box)`
 `;
 
 const note = {
-  id:"",
   heading: "",
   text: "",
-  content: [],
+  todositem: [],
 };
 
 const Form = () => {
@@ -36,7 +35,7 @@ const Form = () => {
 
   const [showTextField, setShowTextField] = useState(false);
 
-  const [addNote, setAddNote] = useState({ ...note, id: uuid() });
+  const [addNote, setAddNote] = useState({ ...note});
 
   const {notes, setNotes } = useContext(DataContext);
 
@@ -63,16 +62,16 @@ const Form = () => {
       //tempcontent is an array of objects of individual items
     setAddNote({
       ...note,
-      content: temp_content,
+      todositem: temp_content,
     });
-    temp_note.content = temp_content;
-    const contentArray = addNote.content.map(({ id, status, value }) => ({ id, status, value }));
-    console.log(contentArray);
+    temp_note.todositem = temp_content;
+    const contentArray = addNote.todositem.map(({ id, status, value }) => ({ id, status, value }));
     if (addNote.heading || addNote.text) {
       setNotes((prevArr) => [temp_note, ...prevArr]);
       const result=await createtodo({heading:addNote.heading,todositem:contentArray});
 
     }
+    console.log("notes",notes);
     // console.log(addNote);
     // console.log(contentArray);
     

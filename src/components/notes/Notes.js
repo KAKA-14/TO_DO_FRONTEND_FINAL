@@ -15,17 +15,19 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const Notes = () => {
   const { notes,setNotes } = useContext(DataContext);
-  // useEffect(()=>{
-  //   fetchtodo();
-  // },[])
-  // async function fetchtodo(){
-  //   const result =await gettodo();
-  //   if (result.status===200&&result.data.status===200){
-  //     setNotes(result.data.data)
-  //   }
-  //   console.log(result.data.data);
+  useEffect(()=>{
+    fetchtodo();
+  },[])
+  async function fetchtodo(){
+    const result =await gettodo();
+    const contentArray = result.data.data.todos.map(({ heading, todositem }) => ({ heading, todositem }));
+    const reversedContentArray = contentArray.reverse();
+    if (result.status===200&&result.data.status===200){
+       setNotes(reversedContentArray);
+    }
+    console.log(contentArray);
 
-  // }
+  }
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
       <SwiperDrawer/>

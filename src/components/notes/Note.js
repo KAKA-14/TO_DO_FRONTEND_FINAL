@@ -33,19 +33,7 @@ const Note = ({ note }) => {
     setDeletedNotes((prevArr) => [note, ...prevArr]);
   };
 
-//  const deleteNoteContent = (note_content) => {
-//     const updatedNotes = notes.map((data) => {
-//       console.log(data);
-//       if (data.id === note.id) {
-//         data.content = data.content.filter((val) => val !== note_content);
-//       }
-//       return data;
-//     });
-//     setNotes(updatedNotes);
-//     if (note.content.length === 0) {
-//       deleteNote(note);
-//     }
-//   }; 
+
 
   const checkNoteContent = (note_content) => {
     const updatedNotes = notes.map((data) => {
@@ -68,7 +56,7 @@ const Note = ({ note }) => {
         {/* <Typography>{note.heading}</Typography>
         <Typography>{note.text}</Typography> */}
         <h4>{note.heading} </h4>
-        {note.content.map((item, index) => {
+        {note.todositem.map((item, index) => {
           //   console.log(item);
           return (
             <NoteContent
@@ -76,7 +64,6 @@ const Note = ({ note }) => {
               key={index}
               id={index}
               onCheckNoteContent={checkNoteContent}
-              // onDeleteNoteContent={deleteNoteContent}
             />
           );
         })}

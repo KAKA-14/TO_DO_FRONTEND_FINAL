@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATETODO, LOGIN, SIGNUP } from './apiConstants';
+import { ARCHIVE, CREATETODO, LOGIN, SIGNUP } from './apiConstants';
 
 export const login=async(data)=>{
     return axios.post(LOGIN,data)
@@ -25,7 +25,15 @@ export const gettodo=async()=>{
         }
     })
 }
-
+export const archive=async()=>{
+    let token=getToken();
+    console.log(token);
+    return axios.get(ARCHIVE,{
+        headers:{
+            auth:token
+        }
+    })
+}
 
 export function getToken(){
     let user= localStorage.getItem('user');
