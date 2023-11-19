@@ -52,7 +52,7 @@ const Note = ({ note }) => {
         {/* <Typography>{note.heading}</Typography>
         <Typography>{note.text}</Typography> */}
         <h4>{note.heading} </h4>
-        {note.todositem.map((item, index) => {
+        {note.todositem&&note.todositem.map((item, index) => {
           //   console.log(item);
           return (
             <NoteContent

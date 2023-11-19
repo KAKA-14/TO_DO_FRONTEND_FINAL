@@ -43,7 +43,7 @@ const Archive = ({ note }) => {
             <h4>
                 {note.heading}
             </h4>
-            {note.todositem.map((item, index) => {
+            {note.todositem&&note.todositem.map((item, index) => {
           return (
             <ArchiveContent
               item={item}
