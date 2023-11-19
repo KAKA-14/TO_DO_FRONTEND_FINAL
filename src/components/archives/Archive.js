@@ -4,7 +4,7 @@ import React from 'react'
 import { UnarchiveOutlined as Unarchive  , DeleteOutlineOutlined as Delete} from '@mui/icons-material'
 import { useContext } from 'react'
 import { DataContext } from '../../context/DataProvider'
-
+import ArchiveContent from './ArchiveContent'
 
 const StyledCard = styled(Card)`
 width: 250px;
@@ -43,10 +43,15 @@ const Archive = ({ note }) => {
             <Typography>
                 {note.heading}
             </Typography>
-            <Typography>
-                {note.text}
-            </Typography>
-
+            {note.todositem.map((item, index) => {
+          return (
+            <ArchiveContent
+              item={item}
+              key={index}
+              id={index}
+            />
+          );
+        })}
         </CardContent>
         <CardActions>
             <Unarchive 
