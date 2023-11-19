@@ -128,7 +128,7 @@ function LandingPage() {
                 <input
                     type="tel"
                     name="phonenumber"
-                    placeholder="Your Contact Number"
+                    placeholder="Phone Number"
                 />
 
                 <textarea
