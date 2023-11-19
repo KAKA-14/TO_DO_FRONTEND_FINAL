@@ -25,10 +25,34 @@ export const gettodo=async()=>{
         }
     })
 }
+export const gettodoarc=async(data)=>{
+    let token=getToken();
+    console.log(token);
+    return axios.put(CREATETODO,{
+        todos: { _id: data._id },
+        isArchive: false, // Pass the current isArchive status
+      },{
+        headers:{
+            auth:token
+        }
+    })
+}
+
 export const archive=async()=>{
     let token=getToken();
     console.log(token);
     return axios.get(ARCHIVE,{
+        headers:{
+            auth:token
+        }
+    })
+}
+export const archiveUnarc=async(data)=>{
+    let token=getToken();
+    return axios.put(ARCHIVE,{
+        todos: { _id: data._id },
+        isArchive: true, // Pass the current isArchive status
+      },{
         headers:{
             auth:token
         }

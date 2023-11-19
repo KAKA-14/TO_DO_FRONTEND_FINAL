@@ -28,6 +28,7 @@ const note = {
   heading: "",
   text: "",
   todositem: [],
+  isArchive: false,
 };
 
 const Form = () => {

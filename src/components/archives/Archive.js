@@ -5,7 +5,7 @@ import { UnarchiveOutlined as Unarchive  , DeleteOutlineOutlined as Delete} from
 import { useContext } from 'react'
 import { DataContext } from '../../context/DataProvider'
 import ArchiveContent from './ArchiveContent'
-
+import { archiveUnarc } from '../../services/api'
 const StyledCard = styled(Card)`
 width: 250px;
 margin:8px;
@@ -19,11 +19,11 @@ const Archive = ({ note }) => {
 
     const {notes , setNotes , archiveNotes, setArchiveNotes , setDeletedNotes} = useContext(DataContext);
 
-    const UnarchieveNote = (note) =>{
+    const UnarchieveNote = async(note) =>{
 
-      const updatedNotes = archiveNotes.filter(data => data.id !== note.id);
-      setArchiveNotes(updatedNotes);
-      setNotes(prevArr => [note,...prevArr]);
+      const result=await archiveUnarc(note);
+      setNotes(result);
+      setArchiveNotes((prevArr) => [note, ...prevArr]);
     }
 
     const deleteNote = (note) =>{
@@ -36,13 +36,12 @@ const Archive = ({ note }) => {
 
 
 
-
   return (
     <StyledCard>
         <CardContent>
-            <Typography>
+            <h4>
                 {note.heading}
-            </Typography>
+            </h4>
             {note.todositem.map((item, index) => {
           return (
             <ArchiveContent

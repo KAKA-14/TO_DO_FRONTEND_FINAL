@@ -8,6 +8,7 @@ import {
 import NoteContent from "./NoteContent";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataProvider";
+import {  gettodoarc } from "../../services/api";
 
 const StyledCard = styled(Card)`
   width: 250px;
@@ -21,16 +22,13 @@ const Note = ({ note }) => {
   const { notes, setNotes, setArchiveNotes, setDeletedNotes } =
     useContext(DataContext);
 
-  const archieveNote = (note) => {
-    const updatedNotes = notes.filter((data) => data.id !== note.id);
-    setNotes(updatedNotes);
-    setArchiveNotes((prevArr) => [note, ...prevArr]);
-  };
+  const archieveNote = async(note) => {
+    const result=await gettodoarc(note);
+    console.log("arc",result);
+    setNotes(result.data.data);
+    console.log("notes",notes);
 
-  const deleteNote = (note) => {
-    const updatedNotes = notes.filter((data) => data.id !== note.id);
-    setNotes(updatedNotes);
-    setDeletedNotes((prevArr) => [note, ...prevArr]);
+    setArchiveNotes((prevArr) => [note, ...prevArr]);
   };
 
 
@@ -64,6 +62,7 @@ const Note = ({ note }) => {
               key={index}
               id={index}
               onCheckNoteContent={checkNoteContent}
+              // onDeleteNoteContent={deleteNoteContent}
             />
           );
         })}
@@ -75,7 +74,7 @@ const Note = ({ note }) => {
           onClick={() => archieveNote(note)}
         />
 
-        <Delete fontSize="small" onClick={() => deleteNote(note)} />
+        {/* <Delete fontSize="small" onClick={() => deleteNote(note)} /> */}
       </CardActions>
     </StyledCard>
   );
