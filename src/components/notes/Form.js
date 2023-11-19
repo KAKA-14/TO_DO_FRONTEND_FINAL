@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { styled } from "@mui/material";
 import { useState, useRef } from "react";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
@@ -9,7 +9,9 @@ import { v4 as uuid } from "uuid";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import "./noteStyle.css";
-
+import { createtodo } from "../../services/api";
+import { useNavigate } from "react-router-dom";
+import { getToken } from "../../services/api";
 const Container = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@ const Container = styled(Box)`
 `;
 
 const note = {
-  id: "",
+  id:"",
   heading: "",
   text: "",
   content: [],
@@ -36,16 +38,17 @@ const Form = () => {
 
   const [addNote, setAddNote] = useState({ ...note, id: uuid() });
 
-  const { setNotes } = useContext(DataContext);
+  const {notes, setNotes } = useContext(DataContext);
 
   const onTextAreaClick = () => {
     setShowTextField(true);
     containerRef.current.style.minHeight = "70px";
   };
 
-  const handleClickAway = () => {
+  const handleClickAway = async() => {
     setShowTextField(false);
     containerRef.current.style.minHeight = "30px";
+    
     let temp_note = addNote;
     let temp_content = addNote.text
       .trim()
@@ -57,16 +60,22 @@ const Form = () => {
           status: false,
         };
       });//new line for checklist
-    console.log(temp_content);
+      //tempcontent is an array of objects of individual items
     setAddNote({
       ...note,
       content: temp_content,
     });
     temp_note.content = temp_content;
+    const contentArray = addNote.content.map(({ id, status, value }) => ({ id, status, value }));
+    console.log(contentArray);
     if (addNote.heading || addNote.text) {
       setNotes((prevArr) => [temp_note, ...prevArr]);
+      const result=await createtodo({heading:addNote.heading,todositem:contentArray});
+
     }
-    console.log(addNote);
+    // console.log(addNote);
+    // console.log(contentArray);
+    
   };
 
   const onTextChange = (e) => {
@@ -76,6 +85,14 @@ const Form = () => {
     setAddNote(changedNote);
   };
 
+
+
+  const navigate = useNavigate();
+  useEffect (()=>{
+    if(!getToken()){
+      navigate('/error');
+    }
+  },[])
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
     <Container className="add-note-input" ref={containerRef}>

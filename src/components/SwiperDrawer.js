@@ -8,7 +8,8 @@ import HeaderBar from "./HeaderBar";
 import Navlist from "./Navlist";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { DataContext } from "../context/DataProvider";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -59,12 +60,15 @@ const SwiperDrawer = () => {
   const handleDrawer = () => {
     setOpen((prevState) => !prevState);
   };
+  const {setNotes} = useContext(DataContext);
 
 const navigate = useNavigate();
 const handleLogout = () => {
   localStorage.clear();
+  
   toast.success("Logging Out");
   setTimeout(() => {
+    setNotes([]);
     navigate('/');
   }, 6000);
 }

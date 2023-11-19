@@ -39,7 +39,7 @@ function Signup({ user, setUser }) {
         localStorage.setItem('user', JSON.stringify(result.data.data));
         toast.success("Welcome Back");
         setTimeout(() => {
-          navigate('/createtodo');
+          navigate('/createtodo/notes');
         }, 6000);
 
         return;
@@ -105,6 +105,7 @@ function Signup({ user, setUser }) {
 
   const [isSignUp, setIsSignUp] = useState(true);
   const [password, setPassword] = useState("");
+  const[email,setEmail]=useState("");//login
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
   const handleToggle = () => {
@@ -138,7 +139,8 @@ function Signup({ user, setUser }) {
             {
               errorsignup?.name && <small>{errorsignup.name.msg}</small>
             }
-            <input type="email" placeholder="Email" name='email' onChange={handleInputChange} />
+            <input type="email" placeholder="Email" name='email'               onChange={(e) => { handleInputChange(e); setEmail(e.target.value); }}
+/>
             {
               errorsignup?.email && <small>{errorsignup.email.msg}</small>
             }
@@ -146,7 +148,6 @@ function Signup({ user, setUser }) {
               type={type}
               name="password"
               placeholder="Password"
-              value={password}
               onChange={(e) => { handleInputChange(e); setPassword(e.target.value); }}
               autoComplete="current-password"
             />
@@ -170,7 +171,6 @@ function Signup({ user, setUser }) {
               type={type}
               name="password"
               placeholder="Password"
-              value={password}
               onChange={(e) => {
                 handleChangeLogin(e);
                 setPassword(e.target.value);

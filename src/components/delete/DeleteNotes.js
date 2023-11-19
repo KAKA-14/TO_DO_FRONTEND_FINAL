@@ -1,8 +1,9 @@
 import React from 'react'
 import { Box, Grid} from '@mui/material';
 import { styled } from '@mui/material';
-import { useContext } from 'react';
-//import components
+import { useContext,useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { getToken } from "../../services/api";//import components
 
 import DeleteNote from './DeleteNote';
 import { DataContext } from '../../context/DataProvider';
@@ -15,7 +16,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const DeleteNotes = () => {
 
     const {deletednotes} = useContext(DataContext);
-
+    const navigate = useNavigate();
+    useEffect (()=>{
+      if(!getToken()){
+        navigate('/error');
+      }
+    },[])
   return (
     <Box sx={{ display: 'flex',width:'100%' }}>
       <SwiperDrawer/>

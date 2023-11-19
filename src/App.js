@@ -11,11 +11,12 @@ import Notes from "./components/notes/Notes";
 import { Box } from "@mui/material";
 import DeleteNotes from "./components/delete/DeleteNotes";
 import Archives from "./components/archives/Archives";
+import Error from './components/Error.js';
 
 function App() {
   const info = localStorage.getItem('user');
   const [user, setUser] = useState(JSON.parse(info));
-
+  
   return (
     <div>
       <BrowserRouter>
@@ -23,12 +24,12 @@ function App() {
           <Route path="/" element={<LP />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Signup user={user} setUser={setUser} />} />
-          
+          <Route path="/error" element={<Error />} />
+          <Route path="/createtodo" element={<Error />} />
         </Routes>
         <DataProvider>
               <Box style={{ display: "flex", width: "100%" }}>
                 <Routes>
-                  <Route path="/createtodo" element={<Notes />} />
                   <Route path="/createtodo/notes" element={<Notes />} />
                   <Route path="/createtodo/archive" element={<Archives />} />
                   <Route path="/createtodo/delete" element={<DeleteNotes />} />

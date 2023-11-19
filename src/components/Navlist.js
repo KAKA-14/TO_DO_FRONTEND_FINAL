@@ -13,7 +13,7 @@ const Navlist = () => {
   const navList = [
     { id: 1, name: "Notes", icon: <EditNoteIcon />, route: "/createtodo/notes" },
     { id: 2, name: "Archive", icon: <ArchiveIcon />, route: "/createtodo/archive" },
-    { id: 3, name: "Reminder", icon: <NotificationsActiveIcon />, route: "/createtodo" },
+    { id: 3, name: "Reminder", icon: <NotificationsActiveIcon />, route: "/createtodo/notes" },
     {
       id: 4,
       name: "Trash",
