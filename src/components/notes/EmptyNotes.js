@@ -2,7 +2,8 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 import styled from '@emotion/styled'
-
+import { useContext } from 'react';
+import {DataContext} from '../../context/DataProvider';
 const Pen = styled(EditNoteIcon)`
 font-size:120px;
 color:#F5F5F5;
@@ -23,13 +24,13 @@ margin-top:20vh;
 `
 
 const EmptyNotes = () => {
+  const{showDelete}=useContext(DataContext);
   return (
     <div>
       <Containerr>
         <Pen/>
-        <Text>
-            Let's do something Today
-        </Text>
+        {showDelete?<Text>There is nothing left to delete</Text>:<Text>Add Your Notes Here...</Text>}
+        
       </Containerr>
     </div>
   )

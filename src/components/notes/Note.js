@@ -17,13 +17,14 @@ const StyledCard = styled(Card)`
   border-radius: 3px;
 `;
 
-const Note =({ note }) => {
+const Note =({ note,setRefresh }) => {
   const { notes, setNotes, setArchiveNotes, showDelete,setShowDelete } =
     useContext(DataContext);
 
   const archieveNote = async(note) => {
     const result=await gettodoarc(note);
     const updatedNotes = notes.filter((data) => data.id !== result.id);
+    setRefresh(new Date());
     setNotes(updatedNotes);
     setArchiveNotes((prevArr) => [result, ...prevArr]);
   };
@@ -47,7 +48,7 @@ const Note =({ note }) => {
   const deleteNote =async (note) => {
     console.log(note);
     const result=await noteDelete({_id:note._id});
-
+    setRefresh(new Date());
     const updatedNotes = notes.filter((data) => data.id !== result.id);
     setNotes(updatedNotes);
   };

@@ -1,10 +1,10 @@
 import React from "react";
 import "./noteStyle.css";
-import { useState } from "react";
-
+import { useState,useContext } from "react";
+import { DataContext } from "../../context/DataProvider";
 export default function NoteContent(props) {
   const [IsChecked, setIsChecked] = useState(false);
-
+  const{showDelete}=useContext(DataContext);
 
 
   function handleChecked() {
@@ -16,9 +16,10 @@ export default function NoteContent(props) {
 
   return (
     <div className="note flex-container-row">
-      <div className="flex-container-row flex-item">
+      
+      {!showDelete&&<div className="flex-container-row flex-item">
         <input onChange={handleChecked} type="checkbox" className="flex-item" />
-      </div>
+      </div>}
       <p
         style={{ textDecorationLine: IsChecked ? "line-through" : "none" }}
         className="flex-item"

@@ -15,9 +15,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const Notes = () => {
   const { notes,setNotes,showDelete } = useContext(DataContext);
+  const [refresh,setRefresh]=useState();
   useEffect(()=>{
     fetchtodo();
-  },[])
+  },[refresh])
   async function fetchtodo(){
     const result =await gettodo();
     const contentArray = result.data.data.todos.map(({_id, heading, todositem,isArchive }) => ({_id, heading, todositem,isArchive }));
@@ -38,7 +39,7 @@ const Notes = () => {
           <Grid container style={{ marginTop: "18px" }}>
             {notes.map((note) => (
               <Grid item key={note._id}>
-                <Note note={note} />
+                <Note note={note} setRefresh={setRefresh} />
               </Grid>
             ))}
           </Grid>

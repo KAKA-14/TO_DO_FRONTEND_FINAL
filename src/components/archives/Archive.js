@@ -15,7 +15,7 @@ border-radius:3px;
 
 `
 
-const Archive = ({ note }) => {
+const Archive = ({ note,setRefresh }) => {
 
     const {notes , setNotes , archiveNotes, setArchiveNotes,showDelete } = useContext(DataContext);
 
@@ -23,6 +23,7 @@ const Archive = ({ note }) => {
 
       const result=await archiveUnarc(note);
       const updatedNotes = archiveNotes.filter(data => data.id !==result.id);
+      setRefresh(new Date());
       setArchiveNotes(updatedNotes);
       setNotes(prevArr => [result,...prevArr]);
 
