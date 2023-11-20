@@ -14,7 +14,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Notes = () => {
-  const { notes,setNotes } = useContext(DataContext);
+  const { notes,setNotes,showDelete } = useContext(DataContext);
   useEffect(()=>{
     fetchtodo();
   },[])
@@ -33,7 +33,7 @@ const Notes = () => {
       <SwiperDrawer />
       <Box sx={{ p: 3, width: "100%" }}>
         <DrawerHeader />
-        <Form />
+        {!showDelete&&<Form />}
         {notes && notes.length > 0 ? (
           <Grid container style={{ marginTop: "18px" }}>
             {notes.map((note) => (

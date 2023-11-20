@@ -17,7 +17,7 @@ border-radius:3px;
 
 const Archive = ({ note }) => {
 
-    const {notes , setNotes , archiveNotes, setArchiveNotes } = useContext(DataContext);
+    const {notes , setNotes , archiveNotes, setArchiveNotes,showDelete } = useContext(DataContext);
 
     const UnarchieveNote = async(note) =>{
 
@@ -61,11 +61,12 @@ const Archive = ({ note }) => {
             />
 
 
-
-            <Delete fontSize='small'
+            {showDelete&&(<Delete fontSize='small'
              onClick = {() => deleteNote(note)}
             
-            />
+            />)}
+
+            
 
         </CardActions>
     </StyledCard>

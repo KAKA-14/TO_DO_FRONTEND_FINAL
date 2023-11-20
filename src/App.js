@@ -31,6 +31,7 @@ function App() {
                 <Routes>
                   <Route path="/createtodo/notes" element={<Notes />} />
                   <Route path="/createtodo/archive" element={<Archives />} />
+                  <Route path="/createtodo/delete" element={<Notes />} />
                 </Routes>
               </Box>
             </DataProvider>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ARCHIVE, CREATETODO, LOGIN, SIGNUP } from './apiConstants';
+import { ARCHIVE, CREATETODO, LOGIN, SIGNUP,DELETE } from './apiConstants';
 
 export const login=async(data)=>{
     return axios.post(LOGIN,data)
@@ -37,7 +37,14 @@ export const gettodoarc=async(data)=>{
         }
     })
 }
-
+export const noteDelete=async(data)=>{
+    let token=getToken();
+    return axios.post(DELETE,data,{
+        headers:{
+            auth:token
+        }
+    })
+}
 export const archive=async()=>{
     let token=getToken();
     console.log(token);

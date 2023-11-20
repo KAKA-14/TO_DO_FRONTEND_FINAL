@@ -8,8 +8,7 @@ import {
 import NoteContent from "./NoteContent";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataProvider";
-import {  gettodoarc } from "../../services/api";
-
+import {  gettodoarc, noteDelete } from "../../services/api";
 const StyledCard = styled(Card)`
   width: 250px;
   margin: 8px;
@@ -18,8 +17,8 @@ const StyledCard = styled(Card)`
   border-radius: 3px;
 `;
 
-const Note = ({ note }) => {
-  const { notes, setNotes, setArchiveNotes, setDeletedNotes } =
+const Note =({ note }) => {
+  const { notes, setNotes, setArchiveNotes, showDelete,setShowDelete } =
     useContext(DataContext);
 
   const archieveNote = async(note) => {
@@ -45,7 +44,13 @@ const Note = ({ note }) => {
     });
     setNotes(updatedNotes);
   };
+  const deleteNote =async (note) => {
+    console.log(note);
+    const result=await noteDelete({_id:note._id});
 
+    const updatedNotes = notes.filter((data) => data.id !== result.id);
+    setNotes(updatedNotes);
+  };
   return (
     <StyledCard>
       <CardContent>
@@ -70,7 +75,7 @@ const Note = ({ note }) => {
           style={{ marginLeft: "auto" }}
           onClick={() => archieveNote(note)}
         />
-
+        {showDelete && (<Delete fontSize="small" onClick={() => deleteNote(note)} />)}
       </CardActions>
     </StyledCard>
   );
