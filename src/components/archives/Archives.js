@@ -4,7 +4,7 @@ import { styled } from '@mui/material';
 import { useContext,useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getToken } from "../../services/api";
-
+import EmptyArchiveNotes from '../notes/EmptyArchiveNotes';
 //import components
 
 import Archive from './Archive'
@@ -32,9 +32,7 @@ const Archives = () => {
       const reversedContentArray = contentArray.reverse();
       if (result.status===200&&result.data.status===200){
          setArchiveNotes(reversedContentArray);
-      }
-      console.log(contentArray);
-  
+      }  
     }
   return (
     
@@ -47,7 +45,7 @@ const Archives = () => {
         
 
 
-
+        {archiveNotes && archiveNotes.length > 0 ? (
         <Grid container style={{marginTop:"18px"}}>
 
         {
@@ -59,7 +57,9 @@ const Archives = () => {
             }
         
             </Grid> 
-            
+             ) : (
+              <EmptyArchiveNotes />
+            )}
          
 
         </Box>

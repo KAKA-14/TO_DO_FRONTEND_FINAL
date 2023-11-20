@@ -1,17 +1,10 @@
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
+import ArchiveIcon from '@mui/icons-material/Archive';
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 import styled from '@emotion/styled'
 import { useContext } from 'react';
 import {DataContext} from '../../context/DataProvider';
-const Pen = styled(EditNoteIcon)`
-font-size:120px;
-color:#F5F5F5;
-
-`
-const Delete = styled(DeleteForeverIcon)`
+const Pen = styled(ArchiveIcon)`
 font-size:120px;
 color:#F5F5F5;
 margin-top:0.7em;
@@ -19,8 +12,7 @@ margin-top:0.7em;
 
 const Text =styled(Typography)`
 color:#80868b;
-font-size:22px;
-
+font-size:22px
 `
 
 const Containerr = styled(Box)`
@@ -31,23 +23,18 @@ margin-top:20vh;
 
 `
 
-const EmptyNotes = () => {
+const EmptyArchiveNotes = () => {
   const{showDelete}=useContext(DataContext);
   return (
     <div>
       <Containerr>
         
-        {showDelete?<>
-            <Delete/><Text>There is Nothing Left to Delete...</Text>
-        </>:<>
         <Pen/>
-        <Text>Add Your Notes Here...</Text>
-        </>
-        }
+        <Text>There is nothing Here...</Text>
         
       </Containerr>
     </div>
   )
 }
 
-export default EmptyNotes;
+export default EmptyArchiveNotes;
