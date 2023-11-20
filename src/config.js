@@ -1,2 +1,2 @@
 //API's endpoint
-export const API_URL = 'http://localhost:8000';
+export const API_URL = 'https://tododeployment-1.onrender.com';
