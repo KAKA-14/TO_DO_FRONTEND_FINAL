@@ -8,7 +8,7 @@ import {
 import NoteContent from "./NoteContent";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataProvider";
-import {  gettodoarc, noteDelete } from "../../services/api";
+import {  gettodoarc, marktodoitem, noteDelete } from "../../services/api";
 const StyledCard = styled(Card)`
   width: 250px;
   margin: 8px;
@@ -31,11 +31,12 @@ const Note =({ note,setRefresh }) => {
 
 
 
-  const checkNoteContent = (note_content) => {
+  const checkNoteContent = async(note_content) => {
     const updatedNotes = notes.map((data) => {
       return {
         ...data,
-        content: data.content.map((value) => {
+        todositem: data.todositem.map((value) => {
+          if (value._id !== note_content._id) return value;
           return {
             ...value,
             status: !value.status,
@@ -44,9 +45,13 @@ const Note =({ note,setRefresh }) => {
       };
     });
     setNotes(updatedNotes);
+    const result=await marktodoitem({
+      _id:note._id,
+      itemid:note_content._id,
+      status:note_content.status,
+    });
   };
   const deleteNote =async (note) => {
-    console.log(note);
     const result=await noteDelete({_id:note._id});
     setRefresh(new Date());
     const updatedNotes = notes.filter((data) => data.id !== result.id);
@@ -59,7 +64,7 @@ const Note =({ note,setRefresh }) => {
         <Typography>{note.text}</Typography> */}
         <h4>{note.heading} </h4>
         {note.todositem&&note.todositem.map((item, index) => {
-          //   console.log(item);
+            
           return (
             <NoteContent
               item={item}

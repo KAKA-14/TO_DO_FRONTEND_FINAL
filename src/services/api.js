@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ARCHIVE, CREATETODO, LOGIN, SIGNUP,DELETE } from './apiConstants';
+import { ARCHIVE, CREATETODO, LOGIN, SIGNUP,DELETE,MARK } from './apiConstants';
 
 export const login=async(data)=>{
     return axios.post(LOGIN,data)
@@ -60,6 +60,14 @@ export const archiveUnarc=async(data)=>{
         todos: { _id: data._id },
         isArchive: true, // Pass the current isArchive status
       },{
+        headers:{
+            auth:token
+        }
+    })
+}
+export const marktodoitem=async(data)=>{
+    let token=getToken();
+    return axios.post(MARK,data,{
         headers:{
             auth:token
         }

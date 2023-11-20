@@ -26,7 +26,7 @@ const Notes = () => {
     if (result.status===200&&result.data.status===200){
        setNotes(reversedContentArray);
     }
-    console.log(contentArray);
+    // console.log(contentArray);
 
   }
   return (

@@ -72,7 +72,7 @@ const Form = () => {
       const result=await createtodo({heading:addNote.heading,todositem:contentArray});
 
     }
-    console.log("notes",notes);
+    // console.log("notes",notes);
     // console.log(addNote);
     // console.log(contentArray);
     

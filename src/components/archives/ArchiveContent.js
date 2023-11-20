@@ -9,6 +9,7 @@ export default function ArchiveContent(props) {
     <div className="note flex-container-row">
       
       <p
+        style={{ textDecorationLine: props.item.status ? "line-through" : "none" }}
         className="flex-item"
       >
         {props.item.value}

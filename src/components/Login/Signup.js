@@ -98,7 +98,6 @@ function Signup({ user, setUser }) {
       toast.error("Something went wrong,please try again later");
       return;
     }
-
   };
 
 
