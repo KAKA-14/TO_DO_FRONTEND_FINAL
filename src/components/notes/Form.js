@@ -68,11 +68,9 @@ const Form = () => {
     temp_note.todositem = temp_content;
     const contentArray = addNote.todositem.map(({ id, status, value }) => ({ id, status, value }));
     if (addNote.heading || addNote.text) {
-      setNotes((prevArr) => [temp_note, ...prevArr]);
       const result=await createtodo({heading:addNote.heading,todositem:contentArray});
-
+      setNotes((prevArr) => [result.data.data, ...prevArr]);
     }
-    window.location.reload();
     // console.log("notes",notes);
     // console.log(addNote);
     // console.log(contentArray);
