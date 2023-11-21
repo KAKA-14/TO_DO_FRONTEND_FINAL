@@ -13,8 +13,9 @@ const StyledCard = styled(Card)`
   width: 250px;
   margin: 8px;
   box-shadow: none;
-  border: 1px solid #e0e0e0;
   border-radius: 3px;
+  background:#121212;
+  color:white;
 `;
 
 const Note =({ note,setRefresh }) => {
@@ -62,7 +63,7 @@ const Note =({ note,setRefresh }) => {
       <CardContent>
         {/* <Typography>{note.heading}</Typography>
         <Typography>{note.text}</Typography> */}
-        <h4>{note.heading} </h4>
+        <h4 style={{color:"wheat"}}>{note.heading} </h4>
         {note.todositem&&note.todositem.map((item, index) => {
             
           return (
@@ -78,10 +79,10 @@ const Note =({ note,setRefresh }) => {
       <CardActions>
         <Archive
           fontSize="small"
-          style={{ marginLeft: "auto" }}
+          style={{ marginLeft: "auto",color:"wheat" }}
           onClick={() => archieveNote(note)}
         />
-        {showDelete && (<Delete fontSize="small" onClick={() => deleteNote(note)} />)}
+        {showDelete && (<Delete style={{color:"wheat"}} fontSize="small" onClick={() => deleteNote(note)} />)}
       </CardActions>
     </StyledCard>
   );

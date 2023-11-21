@@ -33,7 +33,7 @@ input.flex-item{
 
 .add-note-input {
   position: relative;
-  background-color: wheat;
+  background-color: #e6d7d7;
   color:black;
 }
 
@@ -59,6 +59,8 @@ input.flex-item{
 .drawer .MuiPaper-root {
   display: flex;
   height: 100vh;
+  background-color: #121212;
+  color: #fff;
 }
 
 .logout-container {
@@ -79,3 +81,10 @@ input.flex-item{
 input[type=checkbox] {
   accent-color: wheat;
 }
+.logout{
+  background-color:#121212;
+ }
+ 
+ .logout-icon{
+   color:wheat;
+ }

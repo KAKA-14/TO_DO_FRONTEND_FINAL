@@ -12,21 +12,20 @@ import { DataContext } from "../context/DataProvider";
 const Navlist = () => {
   const{setShowDelete}=useContext(DataContext);
   const navList = [
-    { id: 1, name: "Notes", icon: <EditNoteIcon />, route: "/createtodo/notes",onClick: () => setShowDelete(false) },
-    { id: 2, name: "Archive", icon: <ArchiveIcon />, route: "/createtodo/archive",onClick: () => setShowDelete(false) },
-    { id: 3, name: "Reminder", icon: <NotificationsActiveIcon />, route: "/createtodo/notes" },
+    { id: 1, name: "Notes", icon: <EditNoteIcon style ={{color: "wheat"}} />, route: "/createtodo/notes",onClick: () => setShowDelete(false) },
+    { id: 2, name: "Archive", icon: <ArchiveIcon style ={{color: "wheat"}}/>, route: "/createtodo/archive",onClick: () => setShowDelete(false) },
+    { id: 3, name: "Reminder", icon: <NotificationsActiveIcon style ={{color: "wheat"}} />, route: "/createtodo/notes" },
     {
       id: 4,
       name: "Delete",
-      icon: <DeleteOutlineSharpIcon />,
+      icon: <DeleteOutlineSharpIcon style ={{color: "wheat"}}/>,
       route: "/createtodo/delete",
       onClick: () => setShowDelete(true),
     },
   ];
 
   return (
-    <List>
-      {navList.map((list) => (
+     <List style = {{background: "#121212"}}>      {navList.map((list) => (
         <ListItem key={list.id}>
           <Link
             to={list.route}

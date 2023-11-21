@@ -26,12 +26,13 @@ const HeaderBar = ({ open, handleDrawer }) => {
           edge="start"
           sx={{
             marginRight: "25px",
+            color:"#121212",
           }}
         >
           <Menu />
         </IconButton>
-        <ChecklistIcon />
-        <Heading>LISTINATOR</Heading>
+        <ChecklistIcon style = {{color:"#121212"}} />
+        <Heading style = {{color:"#121212"}}>LISTINATOR</Heading>
       </Toolbar>
     </Header>
   );
