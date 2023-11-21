@@ -10,8 +10,8 @@ const StyledCard = styled(Card)`
 width: 250px;
 margin:8px;
 box-shadow:none;
-border:1px solid #e0e0e0;
-border-radius:3px;
+background:#121212;
+color:#fff;
 
 `
 
@@ -41,7 +41,7 @@ const Archive = ({ note,setRefresh }) => {
   return (
     <StyledCard>
         <CardContent>
-            <h4>
+            <h4 style={{color:"wheat"}}>
                 {note.heading}
             </h4>
             {note.todositem&&note.todositem.map((item, index) => {
@@ -57,7 +57,7 @@ const Archive = ({ note,setRefresh }) => {
         <CardActions>
             <Unarchive 
             fontSize='small'
-             style = {{marginLeft:'auto'}}
+             style = {{marginLeft:'auto',color:"wheat"}}
             onClick = {() => UnarchieveNote(note)}
             />
 
