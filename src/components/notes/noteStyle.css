@@ -98,3 +98,11 @@ input[type=checkbox] {
  .css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
   color: white !important;
  }
+ .css-13i4rnv-MuiGrid-root{
+  transition:all 0.2s ease-in-out;
+
+ }
+  .css-13i4rnv-MuiGrid-root:hover{
+    transform:scale(1.02);
+    cursor:pointer;
+  }

@@ -9,6 +9,8 @@ import { DataContext } from "../../context/DataProvider";
 import EmptyNotes from "./EmptyNotes";
 import SwiperDrawer from "../SwiperDrawer";
 import { gettodo } from "../../services/api.js";
+import { useNavigate } from "react-router-dom";
+import { getToken } from "../../services/api";
 const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
@@ -16,7 +18,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const Notes = () => {
   const { notes, setNotes, showDelete,showRem} = useContext(DataContext);
   const [refresh, setRefresh] = useState();
+  const Navigate = useNavigate();
   useEffect(() => {
+    if(!getToken()){
+      Navigate('/error');
+    }
     fetchtodo();
   }, [refresh]);
   async function fetchtodo() {

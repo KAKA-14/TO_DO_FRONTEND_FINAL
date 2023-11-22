@@ -1,5 +1,4 @@
 import {
-  Box,
   Card,
   CardActions,
   CardContent,
@@ -18,7 +17,7 @@ import {
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import NoteContent from "./NoteContent";
-import { useContext,useEffect } from "react";
+import { useContext } from "react";
 import { DataContext } from "../../context/DataProvider";
 import {
   addReminder,
@@ -33,12 +32,11 @@ import { NotificationContext } from "../../context/NotificationProvider";
 const StyledCard = styled(Card)`
   width: 250px;
   margin: 8px;
-  box-shadow: none;
-  border-radius: 3px;
   background: #121212;
   color: white;
+  border:1px solid #323232;
+  box-shadow: 2px 2px 16px #323232;
 `;
-
 
 const Note = ({ note, setRefresh }) => {
   const [reminderDate, setReminderDate] = useState(null);
@@ -69,6 +67,7 @@ const Note = ({ note, setRefresh }) => {
         new Notification(
           `You have a pending task : ${note.heading}  `
         );
+        setRefresh(new Date());
       }, time);
       setNoticationTimer({
         ...notificationTimer,

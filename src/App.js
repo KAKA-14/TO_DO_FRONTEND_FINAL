@@ -38,6 +38,7 @@ function App() {
                     `You have a pending task : ${el.heading}  `
                   );
                   mp[el._id] = x;
+                  window.location.refresh();
                 }, time);
               }
             });
