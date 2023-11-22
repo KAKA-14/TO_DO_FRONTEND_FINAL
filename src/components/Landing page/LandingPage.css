@@ -17,14 +17,6 @@
   }
 
 
-body::before{
-    content:"";
-    width:100%;
-    height: 100%;
-    position:absolute;
-    background-color: black;
-    z-index:-999;
-}
 
 html {
     scroll-behavior: smooth;
@@ -57,6 +49,7 @@ h1.H1{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: black;
   
 
 }
@@ -225,7 +218,6 @@ img{
   }
   .foot{
     margin-top: 40em;
-    background-color:black ;
     color: rgb(255, 253, 249);
     padding-top: 200px;
     height: 100%;
@@ -241,6 +233,7 @@ img{
     display: flex;
     padding-top: 0.5em;
     padding-bottom: 7em;
+    background-color: none!important;
     
   }
   
@@ -306,7 +299,7 @@ img{
     position: absolute;
     background-color: transparent;
     transition: 2s ease-in-out;
-    top:205%;
+    top:94em;
     left: 49%;
     margin-top: -4em;
     transform: translateX(-50%);
@@ -374,6 +367,36 @@ img{
     .foot{
       margin-top: 59em;
     }
+    .contact-form input[name="fname"] {
+      width: 45%;
+      margin-left: -13.5em;
+    }
+    .contact-form input[name="lname"] {
+      width: 53%;
+      margin-top: -3.35em;
+      margin-left: 13em;
+  }
+  .contact-form input[name="email"] {
+    width: 45%;
+    margin-left: -13.5em;
+  }
+  
+  .contact-form input[name="phonenumber"] {
+    width: 53%;
+    margin-top: -3.35em;
+    margin-left: 13em;
+  }
+  .contact-form textarea {
+    height: 13em;
+    margin-left: 0.5em;
+    resize: none;
+  }
+  .contact-form input, .contact-form textarea {
+    width:102.2%;
+  }
+  .btnnn{
+    top:115em;
+  }
     
 }
 @media screen and (min-width:800px) and (max-width: 1000px) {
@@ -478,6 +501,6 @@ img{
   width:102.2%;
 }
 .btnnn{
-  top:287%;
+  top:116em;
 }
 }

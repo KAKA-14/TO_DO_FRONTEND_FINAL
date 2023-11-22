@@ -128,7 +128,7 @@ function Signup({ user, setUser }) {
   };
 
   return (
-    <div>
+    <div className='kk1'>
       <ToastContainer toastStyle={{ backgroundColor: "#121212", color: "wheat" }} />
       <div className={`container ${isSignUp ? 'right-panel-active' : ''}`} id="container">
         <div className="form-container sign-up-container">

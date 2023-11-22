@@ -47,7 +47,7 @@ const Notes = () => {
     // console.log(contentArray);
   }
   return (
-    <Box sx={{ display: "flex", width: "100%" }}>
+    <Box sx={{ display: "flex", width: "100%",backgroundColor:"black",height:"100vh" }}>
       <SwiperDrawer />
       <Box sx={{ p: 3, width: "100%" }}>
         <DrawerHeader />
