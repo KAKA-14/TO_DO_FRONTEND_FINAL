@@ -139,7 +139,7 @@ const Note = ({ note, setRefresh }) => {
       <CardContent>
         {/* <Typography>{note.heading}</Typography>
         <Typography>{note.text}</Typography> */}
-        <h4 style={{ color: isReminderPast() ? "red" : "wheat" }}>{note.heading}{" "}
+        <h4 style={{ color:  note.todositem && note.todositem.every(item => item.status)? "green" : (isReminderPast() ? "red" : "wheat") }}>{note.heading}{" "}
         </h4>
         
         {note.todositem &&
@@ -155,11 +155,11 @@ const Note = ({ note, setRefresh }) => {
           })}
       </CardContent>
       <CardActions>
-      <p style={{ color: isReminderPast() ? "red" : "wheat" }}>
-          {note.reminder?(!isReminderPast()
+      <p style={{ color:  note.todositem && note.todositem.every(item => item.status)? "green" : (isReminderPast() ? "red" : "wheat") }}>
+        { note.todositem && note.todositem.every(item => item.status)?"Everything's Done":(note.reminder?(!isReminderPast()
               ? `Upcoming in ${calculateTimeDifference(note.reminder)}`
-              : "Pending"):""}
-          </p>
+              : "Pending"):"")}
+          </p>  
         <Archive
           fontSize="small"
           style={{ marginLeft: "auto", color: "wheat" }}
