@@ -12,6 +12,8 @@ margin:8px;
 box-shadow:none;
 background:#121212;
 color:#fff;
+border:1px solid #323232;
+box-shadow: 2px 2px 16px #323232;
 
 `
 
