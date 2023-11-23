@@ -10,7 +10,7 @@ function Error() {
   };
 
   return (
-    <div style={{ textAlign: 'center', paddingTop: '1em' }}>
+    <div style={{ textAlign: 'center', paddingTop: '1em',backgroundColor:"black", width:"100%",height:"100vh" }}>
       <img src={error} alt="Error" style={{ backgroundColor: 'black', maxWidth: '35%' }} />
       <h1>Please Login</h1>
       <button
