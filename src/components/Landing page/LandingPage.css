@@ -19,7 +19,7 @@
 
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
 }
 h1.H1{
     color: wheat !important;
@@ -64,7 +64,7 @@ button.home{
 	position: absolute;
 	background-color: transparent;
 	transition: 2s ease-in-out;
-    top:90%;
+    top:37em;
     left:50%;
     transform: translateX(-50%);
 }
@@ -430,6 +430,9 @@ img{
   }
   .foot{
     margin-top: 80em;
+  }
+  .btnnn{
+    top:140em;
   }
 }
 @media (max-width: 500px) {
